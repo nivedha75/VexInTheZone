@@ -1,0 +1,21 @@
+int direction = 1;
+task changeSetup()
+{
+	while(true){
+		if (VexRT[Btn8U] == 1){
+			direction = -1 * direction;
+			waitUntil(VexRT[Btn8U] == 0);
+			
+			}else if (VexRT[Btn8U == 0){
+			
+			}
+	}
+}
+
+task main(){
+	startTask
+	
+	while(true){
+		motor[port1] = VexRT[Ch3] * direction;
+		}
+}
