@@ -46,7 +46,6 @@ void pre_auton()
 	// used by the competition include file, for example, you might want
 	// to display your team name on the LCD in this function.
 	// bDisplayCompetitionStatusOnLcd = false;
-
 	// All activities that occur before the competition starts
 	// Example: clearing encoders, setting servo positions, ...
 }
@@ -60,7 +59,7 @@ void pre_auton()
 /*                                                                           */
 /*  You must modify the code to add your own robot specific commands here.   */
 /*---------------------------------------------------------------------------*/
-
+// Reviewed by Noreen :)
 void allMovForward (int speed, int time)
 {
 	motor[leftdrive1] = speed;
