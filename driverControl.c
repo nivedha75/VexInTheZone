@@ -12,9 +12,9 @@
 task main()
 {
 	while(true) {
-		motor[topRight] = vexRT[Ch1];
-		motor[bottomRight] = vexRT[Ch3];
-		motor[topLeft] = vexRT[Ch1];
+		motor[topRight] = vexRT[Ch2];
+		motor[bottomRight] = vexRT[Ch2];
+		motor[topLeft] = vexRT[Ch3];
 		motor[bottomLeft] = vexRT[Ch3];
 
 	void lift () {
