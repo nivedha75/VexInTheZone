@@ -17,16 +17,21 @@ task main()
 		motor[topLeft] = vexRT[Ch1];
 		motor[bottomLeft] = vexRT[Ch3];
 
+	void lift () {
 		if(vexRT[Btn6U] == true) {
-			motor[liftRight] && motor[liftLeft] = 127;
-			} else if (vexRT[Btn6D] == true) {
-			motor[liftRight] && motor[liftLeft] = -127;
-			} else if(vexRT[Btn5U] == true) {
-			motor[claw] = 127;
-			} else if (vexRT[Btn5D] == true) {
-			motor[claw] = -127;
-		}
-
+		motor[liftRight] && motor[liftLeft] = 127;
+		} else if (vexRT[Btn6D] == true) {
+		motor[liftRight] && motor[liftLeft] = -127;
+		} 
+	}
+		
+	void claw () {
+		
+		if(vexRT[Btn5U] == true) {
+		motor[claw] = 127;
+		} else if (vexRT[Btn5D] == true) {
+		motor[claw] = -127;
+		} else 
 	}
 
 
