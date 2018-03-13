@@ -288,12 +288,8 @@ task autonomous()
 	d = c - 600;
 
 
-	//the following are tasks used in the auton
 
-
-
-
-	//auton code with encoders begins here
+	//AUTON CODE with encoders BEGINS here
 
 	//PART 1: GO AND PICK UP THE MOBILE GOAL AND PLACE IT IN THE ROBOT
 
