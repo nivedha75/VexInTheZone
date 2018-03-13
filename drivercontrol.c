@@ -110,6 +110,8 @@ task usercontrol()
 		//The left side of the joystick controlls the left side of the robot, y-axis
 		motor[leftdrive1] = vexRT[Ch3];
 		motor[leftdrive1] = vexRT[Ch3];
+		
+		//COMMENTS MADE ON DRIVER'S PERSONAL RECOMMENDATIONS
 
 		//right side down and right are mogo
 		//left side autostack
@@ -144,37 +146,37 @@ task usercontrol()
 			motor[claw] = 0;
 
 
-			//BASE LIFT SYSTEM
-			if (vexRT[Btn6U] == 1)//joystick controlls base lift
-			{
-				//move base lift up
-				motor[lift2] = 127;
+		//BASE LIFT SYSTEM
+		if (vexRT[Btn6U] == 1)//joystick controlls base lift
+		{
+			//move base lift up
+			motor[lift2] = 127;
 
-			}else if (vexRT[Btn6D] == 1)
-			{
-				//move base lift down
-				motor[lift2] = -127;
-			}else
-			{
-				motor[lift2] = 0;
-			}
+		}else if (vexRT[Btn6D] == 1)
+		{
+			//move base lift down
+			motor[lift2] = -127;
+		}else
+		{
+			motor[lift2] = 0;
+		}
 
-			//UPPER LIFT SYSTEM
-			if (vexRT[Btn7R] == 1)//joystick controlls upper lift
-			{
-				//move upper four bar up
-				motor[liftleft1] = 127;
-				motor[liftright1] = 127;
-			}else if (vexRT[Btn7D] == 1)
-			{
-				//move upper four bar down
-				motor[liftleft1] = -127;
-				motor[liftright1] = -127;
-			}else
-			{
-				motor[liftleft1] = 0;
-				motor[liftright1] = 0;
-			}
+		//UPPER LIFT SYSTEM
+		if (vexRT[Btn7R] == 1)//joystick controlls upper lift
+		{
+			//move upper four bar up
+			motor[liftleft1] = 127;
+			motor[liftright1] = 127;
+		}else if (vexRT[Btn7D] == 1)
+		{
+			//move upper four bar down
+			motor[liftleft1] = -127;
+			motor[liftright1] = -127;
+		}else
+		{
+			motor[liftleft1] = 0;
+			motor[liftright1] = 0;
+		}
 
 
 		}
