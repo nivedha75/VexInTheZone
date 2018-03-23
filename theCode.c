@@ -65,32 +65,11 @@ void pre_auton()
 /*---------------------------------------------------------------------------*/
 
 
-//NOTE: BOTH SETS OF LIFT MOTORS ARE GOING INTO SAME PORTS
-
-//reset button
-//auto stack lifts system up by a certain
-
-//right side down and right are mogo
-//left side autostack
-//left side claw
-//right side lift sytem(+ left side
-//towards center
-
 //Forward references for functions
 task stepOne();
 task stepTwo();
 task stepThree();
 task stepFour();
-
-//defining variables
-int p;
-int n;
-int c;
-int d;
-
-int l;
-int m;
-int a;
 
 //auton functions
 
@@ -262,137 +241,21 @@ task autonomous()
 	// ..........................................................................
 
 	// Remove this function call once you have "real" code.
-	AutonomousCodePlaceholderForTesting();
-
-
-	//the values for the encoders are listed below
-
-	//fist estimate is 2592 inches and 7.2 revolutions
-	//field 144 by 144 inches
-	//diameter 3.25
-	//one revolution is 10.21 inches
-	//half the distance of field is = a little more than the distance from the rod to the mogo = distance from corner to stationary goal
-	//distance from robot original position to position in front of mogo times 3 and a 1/2 is the length of the whole field
-	//this is 41.14 inches
-	//so second estimate is 4 revolutions and
-	//1440 ticks
-	//to go into zone = 24 inches and 2.4 revolutions
-	//thus 864 ticks
-	//to get over the rods add another 1 revolution
-	//therefore 1224 ticks
-
-	p = 1440;
-	n = p - 1440;
-	l = 1015 + n;
-	m = l + 270;
-	a = m + 1200;
-	c = m + 1224;
-	d = c - 600;
-
-
-	//the following are tasks used in the auton
-
-
-
-
-	//auton code with encoders begins here
-
-	//PART 1: GO AND PICK UP THE MOBILE GOAL AND PLACE IT IN THE ROBOT
-
-	wait1Msec(25);
-	//the lift sytem moves up while
-	startTask(stepOne);
-	//the mobile goal intake moves outward while
-	startTask(stepTwo);
-
-	//from the starting postition next to the rods the robot moves forward to mobogo until it reaches it
-	while (SensorValue[rightEncoder] < p && SensorValue[leftEncoder] < p)
-	{
-		powerDrive(127, 127);
-	}
-
-	//stop the drive when picking up mobile goal
-	stopDriveMotors();
-	wait1Msec(3500);
-	//move mobile goal into robot
-	motor[mobleft] = -127;
-	motor[mobright] = 127;
-
-	//PART 2: MOVE TOWARDS THE ZONE
-
-	//move backward to around starting position
-	while (SensorValue[rightEncoder] < n && SensorValue[leftEncoder] < n )
-	{
-		powerDrive(-127, -127);
-	}
-
-	//lift the lift system up to make sure that it does not hit the wall when turning(next step)
-	motor[liftleft1] = 127;
-	motor[liftright1] = 127;
-	wait1Msec(750);
-
-	//turn to face parallel to rods
-	turnPtLeft(l, 75);
-	startTask(stepThree);
-	//NEED TO USE ENCODERS HERE
-	//move foward to middle of zone
-	//allMovForward(127, 1250);
-	while (SensorValue[rightEncoder] < a) {
-		powerDrive(127, 127);
-	}
-	//turn to face perpendicular to rods
-	turnPtLeft(m, 127);
-
-	//PART 3: MOVE INTO THE ZONE, TAKE MOBILE GOAL OUT OF ROBOT, AND DROP THE MOBILE GOAL IN 20 PT ZONE WHEN MOVING BACKWARD
-
-	//move lift system up while
-	startTask(stepFour);
-
-	//moving forward into zone
-	while (SensorValue[rightEncoder] < c && SensorValue[leftEncoder] < c )
-	{
-		powerDrive(127, 127);
-	}
-
-	//mobile intake system moves out
-	motor[mobleft] = 127;
-	motor[mobright] = 127;
-	wait1Msec(1500);
-	//it has been 15525 one-thousandths of a second(15 sec)
-
-
-	//NEED A TASK HERE TO LOWER MOBILE GOAL INTAKE WHILE MOVING BACK
-	//move backward away from zone releasing the mobile goal
-	while (SensorValue[rightEncoder] < d && SensorValue[leftEncoder] < d )
-	{
-		powerDrive(-127, -127);
-	}
-
-
-
-
-
+	//AutonomousCodePlaceholderForTesting();
 
 
 	//CODE WITHOUT ENCODERS
 	//trying auton for red side(right side/long side)
 
 	wait1Msec(25);
-	startTask(stepOne);
 	startTask(stepTwo);
 	allMovForward(127,2500);
-	//stop when picking up mobile goal
-	stopDriveMotors();
-	wait1Msec(3500);
 	//moving mobile goal into robot
 	motor[mobleft] = -127;
 	motor[mobright] = 127;
+	wait1Msec(2000);
 	//move backward
 	allMovBackward(127,2250);
-	//lift the lift system up to make sure that it does not hit the wall when turning(next step)
-	motor[liftleft1] = 127;
-	motor[liftright1] = 127;
-	wait1Msec(750);
 
 	//turn to face parallel to rods
 	turnPtLeft(l, 75);
@@ -401,14 +264,13 @@ task autonomous()
 	allMovForward(127, 1250);
 	//turn to face perpendicular to rods
 	turnPtLeft(m, 127);
-	//time to enter scoring zone
-	startTask(stepFour);
 	allMovForward(a, 127);//arrive in front of 20 pt zone
 	motor[mobleft] = 127;
 	motor[mobright] = 127;
 	wait1Msec(1500);//drop mobile cone at this step
 	//it has been 15525 one-thousandths of a second(15 sec)
 	allMovBackward(127, 1000);//release cone by going back(the mobile goal must be lifted while going back simultaneously)
+	startTask(stepFour);
 
 }
 
@@ -516,7 +378,10 @@ task usercontrol()
 				motor[liftleft1] = 0;
 				motor[liftright1] = 0;
 			}
-		
+		if (vexRt[Btn7U] == 1)
+		{
+
+		}
 
 		}
 	}
