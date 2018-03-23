@@ -318,7 +318,7 @@ task usercontrol()
 		//towards center
 
 		//mobile goal code
-		if (vexRT[Btn8R] == 1)//move out of robot
+		if (vexRT[Btn8U] == 1)//move out of robot
 		{
 			motor[mobleft] = 127;
 			motor[mobright] = 127;
