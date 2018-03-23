@@ -516,10 +516,7 @@ task usercontrol()
 				motor[liftleft1] = 0;
 				motor[liftright1] = 0;
 			}
-		if (vexRt[Btn7U] == 1)
-		{
-
-		}
+		
 
 		}
 	}
