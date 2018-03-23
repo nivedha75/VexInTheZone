@@ -67,7 +67,7 @@ void pre_auton()
 
 //Forward references for functions
 task stepOne();
-task stepTwo();
+task stepTwo();7
 task stepThree();
 task stepFour();
 
@@ -357,7 +357,7 @@ task usercontrol()
 				motor[lift2] = 0;
 			}
 
-			if (vexRT[Btn7R] == 1)//joystick controlls upper lift
+			if (vexRT[Btn7U] == 1)//joystick controlls upper lift
 			{
 				//move upper four bar up
 				motor[liftleft1] = 127;
