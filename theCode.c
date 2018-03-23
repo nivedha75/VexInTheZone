@@ -104,24 +104,18 @@ void allMovBackward (int speed, int time)
 
 void turnPtRight (int speed, int time)
 {
-	powerDrive(speed, -speed); //remember that
+	powerDrive(-speed, speed); //remember that
 	wait1Msec(time);
 }
 
 //takes about 28.8 inch distance to turn in the auton
 //this is about 2.82 rotations, or 1015 ticks
-void turnPtLeft (int encoderValue, int speed)
-{
-	while (SensorValue[rightEncoder] < encoderValue) {
-		powerDrive(-speed, speed);
-	}
-}
 
-/*void turnPtLeft (int speed, int time)
+void turnPtLeft (int speed, int time)
 {
-powerDrive(-speed, speed);
+powerDrive(speed, -speed);
 wait1Msec(time);
-} */
+} 
 
 void turnSwForward (int speed, int time, int direction)//turning robot foward with one drive fixed and the other drive forward
 {
@@ -258,13 +252,13 @@ task autonomous()
 	allMovBackward(127,2250);
 
 	//turn to face parallel to rods
-	turnPtLeft(l, 75);
+	turnPtLeft(127, 2000);
 	startTask(stepThree);
 	//move foward to middle of zone
 	allMovForward(127, 1250);
 	//turn to face perpendicular to rods
-	turnPtLeft(m, 127);
-	allMovForward(a, 127);//arrive in front of 20 pt zone
+	turnPtLeft(1250, 127);
+	allMovForward(2500, 127);//arrive in front of 20 pt zone
 	motor[mobleft] = 127;
 	motor[mobright] = 127;
 	wait1Msec(1500);//drop mobile cone at this step
