@@ -266,7 +266,12 @@ task autonomous()
 	allMovBackward(127, 1000);//release cone by going back(the mobile goal must be lifted while going back simultaneously)
 	startTask(stepFour);
 	
+	
+	
+	/*
+	
 	//auton for left auton for red and blue sides
+	
 	wait1Msec(25);
 	startTask(stepTwo);
 	allMovForward(127,2500);
@@ -291,6 +296,8 @@ task autonomous()
 	//it has been 15525 one-thousandths of a second(15 sec)
 	allMovBackward(127, 1000);//release cone by going back(the mobile goal must be lifted while going back simultaneously)
 	startTask(stepFour);
+	
+	*/
 
 }
 
