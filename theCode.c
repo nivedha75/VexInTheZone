@@ -67,7 +67,7 @@ void pre_auton()
 
 //Forward references for functions
 task stepOne();
-task stepTwo();7
+task stepTwo();
 task stepThree();
 task stepFour();
 
@@ -239,7 +239,7 @@ task autonomous()
 
 
 	//CODE WITHOUT ENCODERS
-	//trying auton for red side(right side/long side)
+	//trying auton for red side(right side/long side) and I believe blue right side
 
 	wait1Msec(25);
 	startTask(stepTwo);
@@ -258,6 +258,32 @@ task autonomous()
 	allMovForward(127, 1250);
 	//turn to face perpendicular to rods
 	turnPtLeft(1250, 127);
+	allMovForward(2500, 127);//arrive in front of 20 pt zone
+	motor[mobleft] = 127;
+	motor[mobright] = 127;
+	wait1Msec(1500);//drop mobile cone at this step
+	//it has been 15525 one-thousandths of a second(15 sec)
+	allMovBackward(127, 1000);//release cone by going back(the mobile goal must be lifted while going back simultaneously)
+	startTask(stepFour);
+	
+	//auton for left auton for red and blue sides
+	wait1Msec(25);
+	startTask(stepTwo);
+	allMovForward(127,2500);
+	//moving mobile goal into robot
+	motor[mobleft] = -127;
+	motor[mobright] = 127;
+	wait1Msec(2000);
+	//move backward
+	allMovBackward(127,2250);
+
+	//turn to face parallel to rods
+	rightPtLeft(127, 2000);
+	startTask(stepThree);
+	//move foward to middle of zone
+	allMovForward(127, 1250);
+	//turn to face perpendicular to rods
+	rightPtLeft(1250, 127);
 	allMovForward(2500, 127);//arrive in front of 20 pt zone
 	motor[mobleft] = 127;
 	motor[mobright] = 127;
@@ -332,7 +358,7 @@ task usercontrol()
 			motor[mobright] = 0;
 		}
 
-		//claw code
+		/*claw code
 		if (vexRT[Btn5U] == 1) //claw opens
 		{
 			motor[claw] = 127;
@@ -372,11 +398,11 @@ task usercontrol()
 				motor[liftleft1] = 0;
 				motor[liftright1] = 0;
 			}
-		if (vexRt[Btn7U] == 1)
-		{
+		//if (vexRt[Btn7U] == 1)
+		//{
 
-		}
-
+		//}
+*/
 		}
 	}
 }
