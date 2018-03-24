@@ -1,10 +1,10 @@
 #pragma config(Sensor, dgtl1,  rightEncoder,   sensorQuadEncoder)
 #pragma config(Sensor, dgtl3,  leftEncoder,    sensorQuadEncoder)
 #pragma config(Motor,  port1,            ,             tmotorVex393_HBridge, openLoop)
-#pragma config(Motor,  port2,           leftdrive1,    tmotorVex393_MC29, openLoop, reversed)
-#pragma config(Motor,  port3,           leftdrive2,    tmotorVex393_MC29, openLoop, reversed)
-#pragma config(Motor,  port4,           rightdrive1,   tmotorVex393_MC29, openLoop)
-#pragma config(Motor,  port5,           rightdrive2,   tmotorVex393_MC29, openLoop)
+#pragma config(Motor,  port2,           leftdrive1,    tmotorVex393_MC29, openLoop)
+#pragma config(Motor,  port3,           leftdrive2,    tmotorVex393_MC29, openLoop)
+#pragma config(Motor,  port4,           rightdrive1,   tmotorVex393_MC29, openLoop, reversed)
+#pragma config(Motor,  port5,           rightdrive2,   tmotorVex393_MC29, openLoop, reversed)
 #pragma config(Motor,  port6,           mobleft,       tmotorVex393_MC29, openLoop, reversed)
 #pragma config(Motor,  port7,           mobright,      tmotorVex393_MC29, openLoop)
 #pragma config(Motor,  port8,           lift2,         tmotorVex393_MC29, openLoop)
@@ -115,7 +115,7 @@ void turnPtLeft (int speed, int time)
 {
 powerDrive(speed, -speed);
 wait1Msec(time);
-} 
+}
 
 void turnSwForward (int speed, int time, int direction)//turning robot foward with one drive fixed and the other drive forward
 {
@@ -153,7 +153,6 @@ void turnSwBackward (int speed, int time, int direction)//turning robot backward
 	}
 }
 /* Another way of doing swing turns
-
 void turnSwRight (int speed, int time, bool direction)//right drive stays put and left drive moves either forward or backward
 {
 if (bool direction == true){ //moves forward
@@ -171,7 +170,6 @@ motor[rightdrive2] = 0;
 wait1Msec(time);
 }
 }
-
 void turnSwLeft (int speed, int time, bool direction)//left drive stays put and right drive moves either forward or backward
 {
 if (bool direction == true){ //moves forward
@@ -223,7 +221,6 @@ task stepThree()//lower lift sytstem for stability when entering scoring zone
 	//wait1Msec(12275);//it took 12275 one thousandth of a second(12 sec) so far to reach scoring zone 3rd
 	wait1Msec(500);//move forward a bit so robot doesn't hit the stationary goal
 	motor[liftleft1] = -127;
-	motor[liftright1] = -127;
 	wait1Msec(750);
 
 }
@@ -265,13 +262,13 @@ task autonomous()
 	//it has been 15525 one-thousandths of a second(15 sec)
 	allMovBackward(127, 1000);//release cone by going back(the mobile goal must be lifted while going back simultaneously)
 	startTask(stepFour);
-	
-	
-	
+
+
+
 	/*
-	
+
 	//auton for left auton for red and blue sides
-	
+
 	wait1Msec(25);
 	startTask(stepTwo);
 	allMovForward(127,2500);
@@ -281,7 +278,6 @@ task autonomous()
 	wait1Msec(2000);
 	//move backward
 	allMovBackward(127,2250);
-
 	//turn to face parallel to rods
 	rightPtLeft(127, 2000);
 	startTask(stepThree);
@@ -296,7 +292,7 @@ task autonomous()
 	//it has been 15525 one-thousandths of a second(15 sec)
 	allMovBackward(127, 1000);//release cone by going back(the mobile goal must be lifted while going back simultaneously)
 	startTask(stepFour);
-	
+
 	*/
 
 }
@@ -339,10 +335,10 @@ task usercontrol()
 
 		//The right side of the joystick controlls the right side of the robot, y-axis
 		motor[rightdrive1] = vexRT[Ch2];
-		motor[rightdrive1] = vexRT[Ch2];
+		motor[rightdrive2] = vexRT[Ch2];
 		//The left side of the joystick controlls the left side of the robot, y-axis
 		motor[leftdrive1] = vexRT[Ch3];
-		motor[leftdrive1] = vexRT[Ch3];
+		motor[leftdrive2] = vexRT[Ch3];
 
 		//right side down and right are mogo
 		//left side autostack
@@ -375,12 +371,10 @@ task usercontrol()
 		}else
 		{
 			motor[claw] = 0;
-
 			if (vexRT[Btn6U] == 1)//joystick controlls base lift
 			{
 				//move base lift up
 				motor[lift2] = 127;
-
 			}else if (vexRT[Btn6D] == 1)
 			{
 				//move base lift down
@@ -389,7 +383,6 @@ task usercontrol()
 			{
 				motor[lift2] = 0;
 			}
-
 			if (vexRT[Btn7U] == 1)//joystick controlls upper lift
 			{
 				//move upper four bar up
@@ -407,9 +400,7 @@ task usercontrol()
 			}
 		//if (vexRt[Btn7U] == 1)
 		//{
-
 		//}
 */
 		}
 	}
-}
