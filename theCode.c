@@ -362,7 +362,7 @@ task usercontrol()
 		}
 
 		//claw code
-		if (vexRT[Btn5U] == 1) //claw opens
+		/*if (vexRT[Btn5U] == 1) //claw opens
 		{
 			motor[claw] = 127;
 		}else if (vexRT[Btn5D] == 1)
