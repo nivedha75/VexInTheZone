@@ -361,7 +361,7 @@ task usercontrol()
 			motor[mobright] = 0;
 		}
 
-		claw code
+		//claw code
 		if (vexRT[Btn5U] == 1) //claw opens
 		{
 			motor[claw] = 127;
