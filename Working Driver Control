@@ -1,0 +1,39 @@
+#pragma config(Sensor, dgtl1,  rightEncoder,   sensorQuadEncoder)
+#pragma config(Sensor, dgtl3,  leftEncoder,    sensorQuadEncoder)
+#pragma config(Motor,  port1,            ,             tmotorVex393_HBridge, openLoop)
+#pragma config(Motor,  port2,           leftdrive1,    tmotorVex393_MC29, openLoop)
+#pragma config(Motor,  port3,           leftdrive2,    tmotorVex393_MC29, openLoop)
+#pragma config(Motor,  port4,           rightdrive1,   tmotorVex393_MC29, openLoop, reversed)
+#pragma config(Motor,  port5,           rightdrive2,   tmotorVex393_MC29, openLoop, reversed)
+#pragma config(Motor,  port6,           mobleft,       tmotorVex393_MC29, openLoop, reversed)
+#pragma config(Motor,  port7,           mobright,      tmotorVex393_MC29, openLoop)
+#pragma config(Motor,  port10,           lift2,         tmotorVex393_MC29, openLoop)
+#pragma config(Motor,  port9,           claw,          tmotorVex393_MC29, openLoop)
+#pragma config(Motor,  port8,          liftleft1,     tmotorVex393_HBridge, openLoop)
+
+
+task main()
+{
+	while(true){
+		motor[rightdrive1] = vexRT[Ch2];
+		motor[rightdrive2] = vexRT[Ch2];
+		//The left side of the joystick controlls the left side of the robot, y-axis
+		motor[leftdrive1] = vexRT[Ch3];
+		motor[leftdrive2] = vexRT[Ch3];
+		
+		if (vexRT[Btn8U] == 1)//move out of robot
+		{
+			motor[mobleft] = 127;
+			motor[mobright] = 127;
+		}else if (vexRT[Btn8D] == 1)//move into robot
+		{
+			motor[mobleft] = -127;
+			motor[mobright] = -127;
+		}else
+		{
+			motor[mobleft] = 0;
+			motor[mobright] = 0;
+		}
+		delay(10);		
+	}
+}
